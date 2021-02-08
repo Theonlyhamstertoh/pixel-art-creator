@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Art Creator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class='tools'>
+            <div class="buttonContainer">
+                <input type='button' id='rainbow' class='buttonCSS' value='rainbow'>
+                <input type='button' id='greyscale' class='buttonCSS' value='greyscale'>
+                <input type='button' id='black'class='buttonCSS' value='black'>
+                <!-- changes grid-size -->
+                <label id ='labelsize' for='size'>Grid size: 20 x 20</label>
+                <input type='range' id='size' list='tickmarks' class='' min='2' max='100' name='size' value='20'>
+                <datalist id = 'tickmarks'>
+                    <option value='0'></option>
+                    <option value='10'></option>
+                    <option value='20'></option>
+                    <option value='30'></option>
+                    <option value='40'></option>
+                    <option value='50'></option>
+                    <option value='60'></option>
+                    <option value='70'></option>
+                    <option value='80'></option>
+                    <option value='90'></option>
+                    <option value='100'></option>
+                </datalist>
+
+                <input type='image' src='images/iconfinder-icon (1).svg' id='dropper'>
+
+
+
+
+                <input type='button' id='clear' class='buttonCSS' value='Clear'>
+                <input type='color' id='userColorChoice'>
+            </div>
+        </div>
+        <div class="flexWrap">
+            <div class="divContainer"></div>
+        </div>
+        
+    </main>
+    
+    
+    <script src="main.js"></script>
+</body>
+</html>
