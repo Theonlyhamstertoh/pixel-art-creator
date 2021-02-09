@@ -4,14 +4,18 @@ const rainbow = document.getElementById('rainbow');
 const greyscale = document.getElementById('greyscale');
 const black = document.getElementById('black');
 const size = document.getElementById('size');
-const  clear = document.getElementById('clear');
+const dropper = document.getElementById('dropper');
+const eraser = document.getElementById('eraser');
 const userColorChoice = document.getElementById('userColorChoice');
 const labelofSize = document.getElementById('labelsize');
-
+const showGrid = document.getElementById('showGrid');
+const clearBoard = document.getElementById('clearBoard');
+let gridYes = false;
+let buttonArray = [rainbow, greyscale, black, dropper, eraser, showGrid, clearBoard];
+let selected;
 let sizeValue;
-let rainbowSelected;
-
 let allGridvalues = [];
+
 
 console.log(size.value)
 createDiv(20);
@@ -34,11 +38,6 @@ function createDiv(gridSize) {
     
     console.log(container.childNodes)
 }
-
-    
-    
-
-    
 
 
 
@@ -78,14 +77,80 @@ let colorArray = [
 
 
 
-rainbow.onclick = function() {
-    rainbowSelected = true;
+
+buttonArray.forEach((item) => {
+    item.addEventListener('click', (e) => {
+        obj[item.id]();
+    })
+    
+});
+
+let obj = {
+    rainbow: function() {
+        console.log('rainbow')
+        selected = rainbowColor();
+    },
+    greyscale: function() {
+        console.log('greyscale');
+        selected = greyscale;
+    },
+    black: function() {
+        console.log('black');
+        selected = blackColor();
+
+    },
+    dropper: function() {
+        console.log('dropper');
+    },
+    eraser: function() {
+        console.log('clear');
+        selected = eraserTool();
+    },
+    showGrid: function() {
+       
+        
+        console.log(gridYes);
+        if(gridYes === true) {
+            gridYes = false;
+            container.childNodes.forEach((item) => {
+                item.style.border = '';
+            })
+        } else {
+            gridYes = true;
+            container.childNodes.forEach((item) => {
+                item.style.border = '1px solid grey';
+            })
+        }
+
+        
+    },
+    clearBoard: function() {
+        container.childNodes.forEach((item) => {
+            item.style.backgroundColor = '';
+        })
+    },
 }
 
+// allow user to choose their own color
+userColorChoice.onchange = function() {
+    console.log(userColorChoice.value);
+    selected = userColorChoice.value;
+}
+
+
+
+
+// the backbone to allow drawing of pixels 
 container.addEventListener("mouseover", function(e) {
     if(e.target === container) {return};
     let rgbValue = e.target.style;
-    rgbValue.backgroundColor = greyscaleColor(e);
+    if(selected === rainbowColor()) {
+        rgbValue.backgroundColor = rainbowColor();
+    } else if(selected === greyscale) {
+        rgbValue.backgroundColor = greyscaleColor(e);
+    } else {
+        rgbValue.backgroundColor = selected;
+    }
 })
 
 
@@ -95,68 +160,74 @@ function greyscaleColor(e) {
     let rgb = e.target.style.backgroundColor;
     let result;
 
-    switch(rgb) { 
-        case '':
-            result = colorArray[0];
-            break;
-        case colorArray[0]:
-            result = colorArray[1];
-            break;
-        case colorArray[1]:
-            result = colorArray[2];
-            break;
-        case colorArray[2]:
-            result = colorArray[3];
-            break;
-        case colorArray[3]:
-            result = colorArray[4];
-            break;
-        case colorArray[4]:
-            result = colorArray[5];
-            break;
-        case colorArray[5]:
-            result = colorArray[6];
-            break;
-        case colorArray[6]:
-            result = colorArray[7];
-            break;
-        case colorArray[7]:
-            result = colorArray[8];
-            break;
-        case colorArray[8]:
-            result = colorArray[9];
-            break;
-        case colorArray[9]:
-            result = colorArray[10];
-            break;
-        case colorArray[10]:
-            result = colorArray[11];
-            break;
-        case colorArray[11]:
-            result = colorArray[12];
-            break;
-        case colorArray[12]:
-            result = colorArray[13];
-            break;
-        case colorArray[13]:
-            result = colorArray[14];
-            break;
-        case colorArray[14]:
-            result = colorArray[15];
-            break;
-        case colorArray[15]:
-            result = colorArray[16];
-            break;
-        case colorArray[16]:
-            result = colorArray[17];
-            break;
-        case colorArray[17]:
-            result = colorArray[17];
-            break;
-        default: 
-            console.log('no work');
-            break;
+    if(!colorArray.indexOf[rgb]) {
+        result = colorArray[0];
     }
+    
+    switch(rgb) { 
+            case '':
+                result = colorArray[0];
+                break;
+            case colorArray[0]:
+                result = colorArray[1];
+                break;
+            case colorArray[1]:
+                result = colorArray[2];
+                break;
+            case colorArray[2]:
+                result = colorArray[3];
+                break;
+            case colorArray[3]:
+                result = colorArray[4];
+                break;
+            case colorArray[4]:
+                result = colorArray[5];
+                break;
+            case colorArray[5]:
+                result = colorArray[6];
+                break;
+            case colorArray[6]:
+                result = colorArray[7];
+                break;
+            case colorArray[7]:
+                result = colorArray[8];
+                break;
+            case colorArray[8]:
+                result = colorArray[9];
+                break;
+            case colorArray[9]:
+                result = colorArray[10];
+                break;
+            case colorArray[10]:
+                result = colorArray[11];
+                break;
+            case colorArray[11]:
+                result = colorArray[12];
+                break;
+            case colorArray[12]:
+                result = colorArray[13];
+                break;
+            case colorArray[13]:
+                result = colorArray[14];
+                break;
+            case colorArray[14]:
+                result = colorArray[15];
+                break;
+            case colorArray[15]:
+                result = colorArray[16];
+                break;
+            case colorArray[16]:
+                result = colorArray[17];
+                break;
+            case colorArray[17]:
+                result = colorArray[17];
+                break;
+            default: 
+                console.log('no work');
+                break;
+        
+    }
+   
     return result;
 }
 
@@ -170,7 +241,7 @@ function rainbowColor() {
     return color;
 }
 
-function clearColor() {
+function eraserTool() {
     return 'white';
 }
 

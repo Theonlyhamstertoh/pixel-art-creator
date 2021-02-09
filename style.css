@@ -38,7 +38,6 @@ body {
     box-shadow: 3px 3px #e6e8e9;
     margin-right: 10px;
     flex-basis: 100px;
-    outline: none;
 }
 
 .flexWrap {
@@ -60,6 +59,7 @@ body {
 }
 
 #dropper {
+    width: 30px;
     border-radius: 100%;
     box-shadow: 3px 3px #dbdedf;
     margin-right: 15px;
