@@ -15,5 +15,5 @@ In this project, I created a pixel-sketch drawing board which is one of the odin
 * Develop familarity with commiting to *git*
 * deepened knowledge on *DOM Manipulation*
 
-#DEMO IMAGE 
+# DEMO IMAGE 
 ![alt text](https://github.com/theonlyhamstertoh/pixel-art-creator/blob/main/images/window.png?raw=true)
