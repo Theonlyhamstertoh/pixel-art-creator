@@ -1,7 +1,12 @@
 # pixel-art-creator
-link to Demo: https://theonlyhamstertoh.github.io/pixel-art-creator/
-Link to Odin Project: https://www.theodinproject.com/dashboard;
 
+
+## Demo Link and Image
+Demo: https://theonlyhamstertoh.github.io/pixel-art-creator/
+![alt text](https://github.com/theonlyhamstertoh/pixel-art-creator/blob/main/images/window.png?raw=true)
+
+
+Link to Odin Project: https://www.theodinproject.com/dashboard;
 
 In this project, I created a pixel-sketch drawing board which is one of the odin Project's project. Through this project, I garner a lot of new lessons learnt. 
 
@@ -14,6 +19,3 @@ In this project, I created a pixel-sketch drawing board which is one of the odin
 * learned how to make images into pressable buttons and style them in a good looking manner
 * Develop familarity with commiting to *git*
 * deepened knowledge on *DOM Manipulation*
-
-## DEMO IMAGE 
-![alt text](https://github.com/theonlyhamstertoh/pixel-art-creator/blob/main/images/window.png?raw=true)
