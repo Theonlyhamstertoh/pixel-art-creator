@@ -8,43 +8,64 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main>
-        <div class='tools'>
-            <div class="buttonContainer">
-                <input type='button' id='rainbow' class='buttonCSS' value='rainbow'>
-                <input type='button' id='greyscale' class='buttonCSS' value='greyscale'>
-                <input type='button' id='black'class='buttonCSS' value='black'>
+    <div class='container'>
+        <div class='header'>Etch-A-Sketch</div>
+        <div class='main'>
+            <div class="controls">
+                <div class='iconsCard'>
+                    <input type='color' id='userColorChoice'>
+                    <input type='image' src='images/iconfinder-icon (1).svg' id='dropper'>
+                    <input type='image' id='eraser' src='images/eraser.svg' value='Toggle Eraser'>
+                    <input type='image' src='images/grid.svg' id='showGrid'>
+                    <input type='image' src='images/reset.svg' id='clearBoard'>  
+                    
+                </div>
+                
+                
+                <input type='button' id='rainbow' class='buttonCSS' value='Toggle Rainbow'>
+                <input type='button' id='greyscale' class='buttonCSS' value='Toggle Shading'>
+                <input type='button' id='black'class='buttonCSS' value='Toggle Black'>
+                <input type='button' id='lighten' class='buttonCSS' value='Toggle Lighten'>
+                
+               
+             
                 <!-- changes grid-size -->
-                <label id ='labelsize' for='size'>Grid size: 20 x 20</label>
-                <input type='range' id='size' list='tickmarks' class='' min='2' max='100' name='size' value='20'>
-                <datalist id = 'tickmarks'>
-                    <option value='0'></option>
-                    <option value='10'></option>
-                    <option value='20'></option>
-                    <option value='30'></option>
-                    <option value='40'></option>
-                    <option value='50'></option>
-                    <option value='60'></option>
-                    <option value='70'></option>
-                    <option value='80'></option>
-                    <option value='90'></option>
-                    <option value='100'></option>
-                </datalist>
-
-                <input type='image' src='images/iconfinder-icon (1).svg' id='dropper'>
-                <input type='button' value='show grid' id='showGrid'>
-                <input type='button' id='eraser' class='buttonCSS' value='eraser'>
-                <input type='button' value='clear Board' id='clearBoard'>
-                <input type='color' id='userColorChoice'>
+                <div class='rangeWrapper'>
+                    <input type='range' id='size' list='tickmarks'  min='2' max='100' name='size' value='20'>
+                    <label id ='labelsize' for='size'>Grid size: 20 x 20</label>
+                </div>
+                
+                <!-- show grid -->
+         
+                <!-- Clear board -->
+               
+            </div>
+            <div class="flexWrap">  
+                <div class="divContainer"></div>
             </div>
         </div>
-        <div class="flexWrap">
-            <div class="divContainer"></div>
-        </div>
-        
-    </main>
+        <div class='footer'> Made by theonlyhamster </div>
+    </div>
+    
     
     
     <script src="main.js"></script>
 </body>
 </html>
+
+
+
+<!--                 
+<datalist id = 'tickmarks'>
+    <option value='0'></option>
+    <option value='10'></option>
+    <option value='20'></option>
+    <option value='30'></option>
+    <option value='40'></option>
+    <option value='50'></option>
+    <option value='60'></option>
+    <option value='70'></option>
+    <option value='80'></option>
+    <option value='90'></option>
+    <option value='100'></option>
+</datalist> -->

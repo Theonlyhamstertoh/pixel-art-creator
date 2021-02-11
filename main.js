@@ -88,7 +88,7 @@ buttonArray.forEach((item) => {
 let obj = {
     rainbow: function() {
         console.log('rainbow')
-        selected = rainbowColor();
+        selected = rainbow;
     },
     greyscale: function() {
         console.log('greyscale');
@@ -101,6 +101,7 @@ let obj = {
     },
     dropper: function() {
         console.log('dropper');
+        selected = dropper;
     },
     eraser: function() {
         console.log('clear');
@@ -118,7 +119,7 @@ let obj = {
         } else {
             gridYes = true;
             container.childNodes.forEach((item) => {
-                item.style.border = '1px solid grey';
+                item.style.border = 'thin solid lightgrey';
             })
         }
 
@@ -144,18 +145,51 @@ userColorChoice.onchange = function() {
 container.addEventListener("mouseover", function(e) {
     if(e.target === container) {return};
     let rgbValue = e.target.style;
-    if(selected === rainbowColor()) {
+    if(selected === rainbow){
         rgbValue.backgroundColor = rainbowColor();
-    } else if(selected === greyscale) {
+        console.log('asd');
+    }
+    else if(selected === greyscale) {
         rgbValue.backgroundColor = greyscaleColor(e);
+    } else if(selected === dropper){ 
+        rgbValue.backgroundColor = dropperColor(e);
     } else {
         rgbValue.backgroundColor = selected;
+        console.log('else')
     }
 })
 
+function dropperColor(e) {
+    
+    e.target.addEventListener('mousedown', () => {
+        let targetColor = rgbToHex(e.target.style.backgroundColor);
+        userColorChoice.value = targetColor;
+        selected = targetColor;
+    });
+}
 
 
 
+//converting from RGB to HEX
+function rgbToHex(rgb) {
+    let rgbString = `${rgb}`;
+    rgbString = rgbString.match(/\d+/g).map(Number);
+    let hex = '#';
+    for(let i = 0; i < rgbString.length; i++) {
+        hex += componentToHex(rgbString[i]);
+        
+    }
+    return hex;
+}
+function componentToHex(value) {
+    let hexValue = value.toString(16)
+    return hexValue.length === 1 ? '0' + hexValue : hexValue;
+}
+
+
+
+
+//allow shading brush
 function greyscaleColor(e) {
     let rgb = e.target.style.backgroundColor;
     let result;
@@ -163,7 +197,7 @@ function greyscaleColor(e) {
     if(!colorArray.indexOf[rgb]) {
         result = colorArray[0];
     }
-    
+                                                                 
     switch(rgb) { 
             case '':
                 result = colorArray[0];
@@ -254,3 +288,12 @@ function blackColor() {
 //animate each button with it's unique color
 // make buttons more attractice
 // make it the best you can possibly make because it is your big project you can use for portfolio
+// allow downloading pixel art
+// change the shading function
+// make drawing based on holding the mouse not on hover
+// create multiple color circle options
+//create color fill
+// add more colors
+
+// at a certain width, the controls becomes a drop button
+//animate title and made by theonlyhamster 
