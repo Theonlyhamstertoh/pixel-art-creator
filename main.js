@@ -10,13 +10,19 @@ const userColorChoice = document.getElementById('userColorChoice');
 const labelofSize = document.getElementById('labelsize');
 const showGrid = document.getElementById('showGrid');
 const clearBoard = document.getElementById('clearBoard');
+const warm = document.getElementById('warm');
+const cold = document.getElementById('cold');
+const penColor = document.getElementById('penColor');
 let gridYes = false;
-let buttonArray = [rainbow, greyscale, black, dropper, eraser, showGrid, clearBoard];
+let buttonArray = [rainbow, greyscale, black, dropper, eraser, showGrid, clearBoard, warm, cold, penColor];
+let warmArray = ['#BF6A6D', '#A45256', '#EC6760', '#F88C5D', '#FDCF6D']
+let coldArray = ['#5590BC', '#0DABB8', '#01F0F6', '#1FFDE1', '#57FFC8']
 let selected;
 let sizeValue;
 let allGridvalues = [];
+let SwatchTrueorFalse;
 
-
+userColorChoice.value = randomColor();
 console.log(size.value)
 createDiv(20);
 function createDiv(gridSize) {
@@ -84,7 +90,6 @@ buttonArray.forEach((item) => {
     })
     
 });
-
 let obj = {
     rainbow: function() {
         console.log('rainbow')
@@ -130,15 +135,29 @@ let obj = {
             item.style.backgroundColor = '';
         })
     },
+    warm: function() {
+        console.log('warm')
+        selected = warm;
+    }, 
+    cold: function() {
+        console.log('cold');
+        selected = cold;
+    },
+    penColor: function() {
+        console.log('pen');
+        selected = penColor;
+        SwatchTrueorFalse = true;
+
+    }
 }
+
 
 // allow user to choose their own color
 userColorChoice.onchange = function() {
     console.log(userColorChoice.value);
-    selected = userColorChoice.value;
+    SwatchTrueorFalse = false;
+    
 }
-
-
 
 
 // the backbone to allow drawing of pixels 
@@ -148,23 +167,30 @@ container.addEventListener("mouseover", function(e) {
     if(selected === rainbow){
         rgbValue.backgroundColor = rainbowColor();
         console.log('asd');
-    }
-    else if(selected === greyscale) {
+    } else if(selected === greyscale) {
         rgbValue.backgroundColor = greyscaleColor(e);
     } else if(selected === dropper){ 
         rgbValue.backgroundColor = dropperColor(e);
+    } else if(selected === warm) {
+        rgbValue.backgroundColor = warmColor()
+    } else if(selected === cold) {
+        rgbValue.backgroundColor = coldColor();
+    } else if(selected === penColor) {
+        if(SwatchTrueorFalse === true) {
+            rgbValue.backgroundColor = userColorChoice.value;
+            console.log(rgbValue.backgroundColor, userColorChoice.value)
+        } else {return;} 
     } else {
         rgbValue.backgroundColor = selected;
         console.log('else')
     }
 })
-
+ 
 function dropperColor(e) {
-    
+    console.log(e.target);
     e.target.addEventListener('mousedown', () => {
         let targetColor = rgbToHex(e.target.style.backgroundColor);
         userColorChoice.value = targetColor;
-        selected = targetColor;
     });
 }
 
@@ -187,16 +213,15 @@ function componentToHex(value) {
 }
 
 
-
-
 //allow shading brush
 function greyscaleColor(e) {
     let rgb = e.target.style.backgroundColor;
+    console.log(rgb);
     let result;
-
+    console.log(colorArray.indexOf[rgb])
     if(!colorArray.indexOf[rgb]) {
         result = colorArray[0];
-    }
+    } 
                                                                  
     switch(rgb) { 
             case '':
@@ -266,14 +291,27 @@ function greyscaleColor(e) {
 }
 
 
-function rainbowColor() {
+function randomColor() {
     let colorString = '0123456789ABCDEF';
     let color = "#";
     for(let i = 0; i < 6; i++) {
         color += colorString[Math.floor(Math.random() * 16)];
     }
     return color;
+
+
 }
+
+function rand(min, max) {
+    return min + (Math.random() * (max - min));
+}
+
+function rainbowColor() {
+    let color =  `hsl(${Math.random() * 360}, 100%, 50%)`
+    return color;
+}
+
+
 
 function eraserTool() {
     return 'white';
@@ -283,6 +321,16 @@ function blackColor() {
     return 'black';
 }
 
+
+function warmColor() {
+    let warmRandom = warmArray[Math.floor(Math.random() * warmArray.length)]
+    return warmRandom;
+}
+
+function coldColor() {
+    let coldRandom =  coldArray[Math.floor(Math.random() * coldArray.length)]
+    return coldRandom;
+}
 
 
 //animate each button with it's unique color
