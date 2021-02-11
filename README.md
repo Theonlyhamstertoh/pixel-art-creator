@@ -5,7 +5,7 @@ Link to Odin Project: https://www.theodinproject.com/dashboard;
 
 In this project, I created a pixel-sketch drawing board which is one of the odin Project's project. Through this project, I garner a lot of new lessons learnt. 
 
-##Below are the experiences gained from this:
+## Below are the experiences gained from this:
 * deepened my understanding of CSS Grid, CSS FLexbox, and what it takes to make good looking UI
 * learned how to use **mouseover** event and how to change functions based on the button clicked
 * learned to overcome problems by struggling through as I believe the best long-term learning is the is what appears to be slow short term growth. 
