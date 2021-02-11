@@ -14,5 +14,6 @@ In this project, I created a pixel-sketch drawing board which is one of the odin
 * learned how to make images into pressable buttons and style them in a good looking manner
 * Develop familarity with commiting to *git*
 * deepened knowledge on *DOM Manipulation*
-* 
+
+#DEMO IMAGE 
 ![alt text](https://github.com/theonlyhamstertoh/pixel-art-creator/blob/main/images/window.png?raw=true)
